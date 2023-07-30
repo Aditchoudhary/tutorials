@@ -72,12 +72,12 @@ aws configure --profile localstack
 
 
 You will be prompted to provide AWS Access Key ID, AWS Secret Access Key, Default region name, and Default output format. However, since LocalStack doesn't require actual AWS credentials, you can input dummy values for them. For example:
-
+```
 AWS Access Key ID [None]: dummy-access-key
 AWS Secret Access Key [None]: dummy-secret-key
 Default region name [None]: us-west-2
 Default output format [None]: json
-
+```
 
 Now, you can run AWS CLI commands with the --profile option set to "localstack" and get s3 bucket list
 ```
