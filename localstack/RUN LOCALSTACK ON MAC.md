@@ -1,12 +1,18 @@
+# RUN LOCALSTACK ON MAC 
+
+
 Pull localstack latest image using docker
 
+```
 docker pull localstack/localstack
-
+```
 
 
 Start LocalStack Container: Run the following command to start the LocalStack container. This command exposes the required ports and mounts the data directory for persistent storage:
 
-docker run -d --name localstack -p 4566:4566 -e SERVICES=s3,dynamodb -e DATA_DIR=/tmp/localstack/data localstack/localstack
+```
+- docker run -d --name localstack -p 4566:4566 -e SERVICES=s3,dynamodb -e DATA_DIR=/tmp/localstack/data localstack/localstack
+```
 
 
 Explanation of the options used in the docker run command:
@@ -21,40 +27,48 @@ Explanation of the options used in the docker run command:
 
 Verify LocalStack Status: You can check if the LocalStack container is running using the following command:
 
+```
 docker ps
+```
 
 
 
 Test LocalStack: LocalStack is now running, and you can interact with it using AWS CLI or SDKs.
 
+```
 aws --endpoint-url=http://localhost:4566 s3 ls
+```
 
 
 
 Install Homebrew (if not already installed):
 Open Terminal and run the following command to install Homebrew, which is a popular package manager for macOS:
 
+```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
+```
 
 
 Install AWS CLI using Homebrew:
 After installing Homebrew, run the following command to install the AWS CLI:
 
+```
 brew install awscli
-
+```
 
 
 Once the installation is complete, verify that the AWS CLI is working correctly by running:
 
+```
 aws --version
-
+```
 
 
 Run the following command to create a dummy AWS profile named "localstack":
 
+```
 aws configure --profile localstack
-
+```
 
 
 You will be prompted to provide AWS Access Key ID, AWS Secret Access Key, Default region name, and Default output format. However, since LocalStack doesn't require actual AWS credentials, you can input dummy values for them. For example:
@@ -66,11 +80,13 @@ Default output format [None]: json
 
 
 Now, you can run AWS CLI commands with the --profile option set to "localstack" and get s3 bucket list
+```
 aws --profile localstack --endpoint-url=http://localhost:4566 s3 ls
-
+```
 
 
 To create an S3 bucket using the AWS CLI with LocalStack, follow these steps:
 
+```
 aws --profile localstack --endpoint-url=http://localhost:4566 s3 mb s3://my-test-bucket
-
+```
